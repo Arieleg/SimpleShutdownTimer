@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="Icons">
+    <file>Icons/english.png</file>
+    <file>Icons/spanish.png</file>
+    <file>Icons/cancel.png</file>
+    <file>Icons/main.png</file>
+  </qresource>
+  <qresource prefix="Languages">
+    <file>Languages/mainwindow_es.qm</file>
+  </qresource>
+</RCC>
