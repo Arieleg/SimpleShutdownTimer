@@ -10,8 +10,8 @@ from ui.Ui_mainwindow import Ui_MainWindow
 
 
 class ShutdownScheduler(QMainWindow):
-    lang_conf_folder_path = str(os.getenv('APPDATA')) + '/SimpleShutdownTimer/'
-    lang_conf_file_path = str(os.getenv('APPDATA')) + '/SimpleShutdownTimer/lang.ini'
+    lang_conf_folder_path = os.path.abspath(os.path.dirname(__file__))
+    lang_conf_file_path = os.path.abspath(os.path.dirname(__file__)) + '/lang.ini'
 
     def __init__(self):
         QMainWindow.__init__(self)
@@ -53,7 +53,7 @@ class ShutdownScheduler(QMainWindow):
         QApplication.instance().installTranslator(translator)
         self.ui.retranslateUi(self)
         config = configparser.ConfigParser()
-        config['LANGUAGE'] = {'lang': 'en'}
+        config['LANGUAGE'] = {'lang': 'es'}
         with open(self.lang_conf_file_path, 'w') as lang_configfile:
             config.write(lang_configfile)
 
