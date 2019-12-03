@@ -4,21 +4,19 @@ import sys
 
 from PyQt5.QtCore import pyqtSlot, QTranslator
 from PyQt5.QtWidgets import QMainWindow, QApplication
-
 from fbs_runtime.application_context.PyQt5 import ApplicationContext
 
 from ui.Ui_mainwindow import Ui_MainWindow
 
 
 class ShutdownScheduler(QMainWindow):
-    lang_conf_folder_path = str(os.getenv('APPDATA')) +'/SimpleShutdownTimer/'
-    lang_conf_file_path= str(os.getenv('APPDATA')) + '/SimpleShutdownTimer/lang.ini'
+    lang_conf_folder_path = str(os.getenv('APPDATA')) + '/SimpleShutdownTimer/'
+    lang_conf_file_path = str(os.getenv('APPDATA')) + '/SimpleShutdownTimer/lang.ini'
 
     def __init__(self):
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.setFixedSize(self.width(), self.height())
         self.pref_lang()
         self.ui.pushButtonOk.clicked.connect(self.program_new)
         self.ui.actionCancel_shutdown.triggered.connect(self.cancel)
@@ -32,7 +30,6 @@ class ShutdownScheduler(QMainWindow):
         seconds = self.ui.spinBoxSeconds.value()
         time = hours * 3600 + minutes * 60 + seconds
         os.system('shutdown /S /T {}'.format(time))
-
 
     @pyqtSlot()
     def cancel(self):

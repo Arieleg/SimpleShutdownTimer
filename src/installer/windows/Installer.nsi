@@ -98,6 +98,7 @@ Section "Uninstall"
   RMDir /r "$InstDir"
   RMDir /r "$PROFILE\AppData\Roaming\SimpleShutdownTimer"
   Delete "$SMPROGRAMS\SimpleShutdownTimer.lnk"
+  Delete "$desktop\SimpleShutdownTimer.lnk"
   DeleteRegKey /ifempty SHCTX "Software\SimpleShutdownTimer"
   DeleteRegKey SHCTX "${UNINST_KEY}"
 
