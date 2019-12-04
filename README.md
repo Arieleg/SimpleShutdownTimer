@@ -4,7 +4,7 @@ A very simple shutdown scheduler for Windows. Just enter the count down time and
 
 Download: https://github.com/Arieleg/SimpleShutdownTimer/releases/tag/v1.0.0
 
-# Features:
+# Features
 *  Schedule automatic shutdown task with very simple interface.
 *  Cancel existing automatic shutdown tasks.
 *  Change language between English and Spanish from the menu.
