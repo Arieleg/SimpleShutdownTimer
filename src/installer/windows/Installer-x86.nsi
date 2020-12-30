@@ -1,6 +1,5 @@
 !include MUI2.nsh
 !include FileFunc.nsh
-!include "x64.nsh"
 
 ;--------------------------------
 ;Perform Machine-level install, if possible
@@ -13,19 +12,14 @@
 !include LogicLib.nsh
 
 Function .onInit
-  ${If} ${RunningX64}
-      !insertmacro MULTIUSER_INIT
-      ;Do not use InstallDir at all so we can detect empty $InstDir!
-      ${If} $InstDir == "" ; /D not used
-          ${If} $MultiUser.InstallMode == "AllUsers"
-              StrCpy $InstDir "$PROGRAMFILES64\SimpleShutdownTimer"
-          ${Else}
-              StrCpy $InstDir "$LOCALAPPDATA\SimpleShutdownTimer"
-          ${EndIf}
+  !insertmacro MULTIUSER_INIT
+  ;Do not use InstallDir at all so we can detect empty $InstDir!
+  ${If} $InstDir == "" ; /D not used
+      ${If} $MultiUser.InstallMode == "AllUsers"
+          StrCpy $InstDir "$PROGRAMFILES64\SimpleShutdownTimer"
+      ${Else}
+          StrCpy $InstDir "$LOCALAPPDATA\SimpleShutdownTimer"
       ${EndIf}
-  ${else}
-  MessageBox MB_OK "This version only works on x64 systems. Please try the x86 version."
-  Abort
   ${EndIf}
 FunctionEnd
 

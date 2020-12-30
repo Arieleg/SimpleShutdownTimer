@@ -10,8 +10,17 @@ from ui.Ui_mainwindow import Ui_MainWindow
 
 
 class ShutdownScheduler(QMainWindow):
-    lang_conf_folder_path = str(os.getenv('APPDATA')) + '/SimpleShutdownTimer/'
-    lang_conf_file_path = str(os.getenv('APPDATA')) + '/SimpleShutdownTimer/lang.ini'
+    #Config Portable/Installable version
+    PORTABLE=False
+    if(PORTABLE):
+        lang_conf_folder_path = os.getcwd()
+        lang_conf_file_path = os.getcwd() + '/lang.ini'
+    else:
+        lang_conf_folder_path = str(os.getenv('APPDATA')) + '/SimpleShutdownTimer/'
+        lang_conf_file_path = str(os.getenv('APPDATA')) + '/SimpleShutdownTimer/lang.ini'
+
+
+
 
     def __init__(self):
         QMainWindow.__init__(self)
